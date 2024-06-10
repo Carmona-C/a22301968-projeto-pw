@@ -1,0 +1,43 @@
+{% extends 'AplicacaoArtigo/layout.html' %}
+
+{% block title %}Artigo{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="autor-info">
+        <h2>{{ autor.nome }}</h2>
+        <p>{{ autor.biografia }}</p>
+        {% if request.user.is_authenticated and is_editor %}
+        <a href="{% url 'AplicacaoArtigo:edita_autor' autor.id %}">
+            <button>Editar autor</button>
+        </a>
+        <a href="{% url 'AplicacaoArtigo:apaga_autor' autor.id %}">
+            <button>Apagar autor</button>
+        </a>
+        {% endif %}
+        <br>
+        <br><h5>Artigos mais importantes deste autor:</h5>
+        <ul>
+            {% for artigo in artigos %}
+                <li>
+                    <span class="bullet">&#8226;</span> <a href="{% url 'AplicacaoArtigo:artigo' artigo.id %}">{{ artigo.titulo }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        {% if request.user.is_authenticated and is_editor %}
+        <a href="{% url 'AplicacaoArtigo:novo_artigo' %}">
+            <button>Novo artigo</button>
+        </a>
+        {% endif %}
+    <div style="text-align: right;">
+        <button class="btn-voltar" onclick="goBack()">Voltar atrás</button>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</script>
+{% endblock %}

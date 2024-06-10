@@ -1,0 +1,196 @@
+<!--templates/layout.html -->
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+        }
+        header {
+            background-color: #1b3a57;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            animation: fadeInDown 1s ease-in-out;
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        nav {
+            margin: 20px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #1b3a57;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 0 10px;
+            padding: 5px 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #1b3a57;
+            color: #fff;
+        }
+        main {
+            flex: 1;
+            padding: 40px;
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 1s ease-in-out;
+            position: relative;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        footer {
+            background-color: #1b3a57;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: auto;
+        }
+        footer p {
+            margin: 10px 0;
+        }
+        button {
+            background-color: #1b3a57;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin: 5px;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #16334a;
+        }
+        .auth-info {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .btn-voltar {
+        background-color: #ffffff;
+        color: #1b3a57;
+        border: 2px solid #1b3a57;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        border-radius: 5px; /* Removido para tornar o botão retangular */
+        font-size: 0.9em; /* Aumentado o tamanho do texto */
+        width: auto; /* Largura automática */
+        height: auto; /* Altura automática */
+        text-align: center;
+        line-height: 1em; /* Ajuste da altura da linha */
+        position: relative; /* Alterado para relativo */
+        bottom: auto; /* Removido */
+        right: auto; /* Removido */
+        }
+
+        .btn-voltar:hover {
+         background-color: #e0e0e0;
+         color: #1b3a57;
+        }
+   .band-image-container {
+    width: 250px; /* Aumenta um pouco a largura do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    border: 4px solid #1b3a57; /* Adiciona uma borda sólida com a cor desejada e espessura de 4 pixels */
+    padding: 8px; /* Adiciona um espaço interno de 8 pixels entre a borda e a imagem */
+    box-sizing: border-box; /* Garante que a largura e altura incluam a borda e o preenchimento */
+}
+
+.band-image-container img.band-image {
+    width: 100%; /* Preenche completamente o contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Remove espaços em branco abaixo da imagem */
+}
+
+        .album-image-container {
+    width: 200px; /* Defina a largura desejada */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    border: 4px solid #1b3a57; /* Adiciona uma borda sólida com a cor desejada e espessura de 4 pixels */
+    padding: 8px; /* Adiciona um espaço interno de 8 pixels entre a borda e a imagem */
+    box-sizing: border-box; /* Garante que a largura e altura incluam a borda e o preenchimento */
+}
+
+.album-image-container img {
+    max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Remove espaços em branco abaixo da imagem */
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo ao Meu Site de Bandas</h1>
+    </header>
+    <main>
+        <p>Pesquisa e saiba mais acerca dos nossos álbuns e músicas!</p>
+        <nav>
+            <a href="{% url 'bandas:principal' %}">Página Principal</a>
+            <a href="{% url 'menu' %}">Menu</a>
+        </nav>
+        <div class="auth-info">
+            {% if request.user.is_authenticated %}
+                <p>Username: {{ request.user.username }}</p>
+                <a href="{% url 'logout' %}"><button>Logout</button></a>
+            {% else %}
+                <a href="{% url 'login' %}"><button>Login</button></a>
+            {% endif %}
+        </div>
+        <div>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Programação Web, Universidade Lusófona - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,151 @@
+{% block content %}
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+    text-align: center;
+}
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 700px; /* Aumenta a largura máxima do container */
+    margin: 0 auto; /* Centraliza o container na tela */
+  }
+  .auth-container {
+    position: relative;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .auth-container h1 {
+    margin: 20px 0;
+    color: #333;
+  }
+  .auth-container h3 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  .auth-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  .auth-container li {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  .auth-container button {
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  .logout-btn, .register-btn, .login-btn, .bandas-btn, .artigos-btn, .cursos-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .logout-btn, .register-btn, .login-btn {
+    background-color: black;
+  }
+  .logout-btn:hover, .register-btn:hover, .login-btn:hover {
+    background-color: black;
+  }
+  .bandas-btn {
+    background-color: #0056b3;
+  }
+  .bandas-btn:hover {
+    background-color: #0056b3;
+  }
+  .artigos-btn {
+    background-color: #fd7e14;
+  }
+  .artigos-btn:hover {
+    background-color: #e96b10;
+  }
+  .cursos-btn {
+    background-color: #6c757d;
+  }
+  .cursos-btn:hover {
+    background-color: #5a6268;
+  }
+  .meteo-btn {
+    background-color:#8ab6d6;
+  }
+  .meteo-btn:hover {
+    background-color: #8ab6d6;; /* Ajusta a cor quando hover */
+  }
+  .portofolio-btn {
+    background-color:#ffd54f;
+  }
+  .portofolio-btn:hover {
+    background-color:#ffd54f;; /* Ajusta a cor quando hover */
+  }
+  .section {
+    margin-bottom: 20px;
+  }
+  .btn-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  .btn-group button {
+    flex: 1;
+    margin: 0 5px;
+  }
+  .login-register {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .login-register button {
+    flex: 1;
+  }
+</style>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.7">
+<div class="container">
+  <div class="auth-container">
+    <h1>Menu Principal</h1>
+    {% if request.user.is_authenticated %}
+      <h3>Bem-vindo, {{ request.user.first_name }} {{ request.user.last_name }}</h3>
+      <ul>
+        <li><strong>Username:</strong> {{ request.user.username }}</li>
+        <li><strong>Email:</strong> {{ request.user.email }}</li>
+      </ul>
+      <div class="section">
+        <p><button class="logout-btn" onclick="window.location.href='{% url 'logout' %}'">Logout</button></p>
+      </div>
+    {% else %}
+      <div class="login-register">
+        <button class="register-btn" onclick="window.location.href='{% url 'registo' %}'">Registo</button>
+        <button class="login-btn" onclick="window.location.href='{% url 'login' %}'">Login</button>
+      </div>
+    {% endif %}
+    <div class="section btn-group">
+      <button class="bandas-btn" onclick="window.location.href='{% url 'bandas:principal' %}'">Bandas</button>
+      <button class="artigos-btn" onclick="window.location.href='{% url 'AplicacaoArtigo:principal' %}'">Artigos</button>
+      <button class="cursos-btn" onclick="window.location.href='{% url 'curso:principal' %}'">Cursos</button>
+      <button class="meteo-btn" onclick="window.location.href='{% url 'meteo:previsao_lisboa' %}'">Meteorologia</button>
+      <button class="portofolio-btn" onclick="window.location.href='{% url 'portofolio:principal' %}'">Portofólio</button>
+    </div>
+  </div>
+</div>
+{% endblock %}

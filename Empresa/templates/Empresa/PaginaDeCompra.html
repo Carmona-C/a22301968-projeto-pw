@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.M.Carmona - Materiais de Construção, Unipessoal Lda</title>
+    <style>
+        body {
+            background: lightgoldenrodyellow;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Consulte a sua compra:</h1>
+    </header>
+    <nav>
+            <a href="{% url 'Empresa:IntroducaoDaEmpresa' %}">IntroduçãoDaEmpresa</a>&nbsp;&nbsp;
+            <a href="{% url 'Empresa:PaginaDeOrcamento' %}">PáginaDeOrçamento</a>
+    </nav>
+    <body>
+    <header>
+         <h2>Detalhes da Compra</h2>
+    <form>
+        <div>
+            <label for="nome_cliente">Nome do Cliente:</label>
+            <input type="text" id="nome_cliente" name="nome_cliente">
+        </div><br>
+        <div>
+            <label for="numero_orcamento">Número do Orçamento:</label>
+            <input type="text" id="numero_orcamento" name="numero_orcamento">
+        </div>
+        <div><br>
+            <input type="submit" value="Consultar Compra">
+        </div>
+    </form>
+</body>
+</html>
+
+        <p><br>Desfruta e descobre mais sobre o nosso site!</p><br>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - J.M.Carmona - Materiais de Construção, Unipessoal Lda - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

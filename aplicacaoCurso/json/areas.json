@@ -1,0 +1,80 @@
+{
+  "areas_cientificas": [
+    {
+      "nome_area": "Matemáticas e Físicas",
+      "disciplinas": [
+        "Investigação Operacional",
+        "Matemática I",
+        "Matemática II",
+        "Métricas Empresariais"
+      ]
+    },
+    {
+      "nome_area": "Arquiteturas e Sistemas Operativos",
+      "disciplinas": [
+        "Sistemas operativos"
+      ]
+    },
+    {
+      "nome_area": "Redes e Telecomunicações",
+      "disciplinas": [
+        "Redes de Computadores"
+      ]
+    },
+    {
+      "nome_area": "Programação e Engenharia de SW",
+      "disciplinas": [
+        "Algoritmia e Estruturas de Dados",
+        "Engenharia de Software",
+        "Fundamentos de Programação",
+        "Linguagens de Programação I",
+        "Linguagens de Programação II",
+        "Programação Web",
+        "Sistemas de Informação na Nuvem",
+        "Sistemas Móveis Empresariais"
+      ]
+    },
+    {
+      "nome_area": "Sistemas de Informação",
+      "disciplinas": [
+        "Bases de Dados",
+        "Engenharia de Requisitos e Testes",
+        "Fundamentos de Sistemas de Informação"
+      ]
+    },
+    {
+      "nome_area": "Interação Humano-Máquina",
+      "disciplinas": [
+        "Interação Humano-Máquina"
+      ]
+    },
+    {
+      "nome_area": "Dados e Inteligência Artificial",
+      "disciplinas": [
+        "Data Mining",
+        "Inteligência Artificial",
+        "Sistemas de Suporte à Decisão"
+      ]
+    },
+    {
+      "nome_area": "Gestão e Softskills",
+      "disciplinas": [
+        "Auditoria de Sistemas de Informação",
+        "Cálculo Financeiro",
+        "Competências Comportamentais",
+        "Contabilidade",
+        "Controlo de Gestão",
+        "Gestão Financeira",
+        "Instrumentos de Gestão",
+        "Motivação e Liderança",
+        "Teoria e Prática de Marketing"
+      ]
+    },
+    {
+      "nome_area": "Genérica",
+      "disciplinas": [
+        "Trabalho Final Curso"
+      ]
+    }
+  ]
+}

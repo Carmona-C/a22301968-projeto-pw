@@ -1,0 +1,72 @@
+[
+    {
+        "nome": "Led Zeppelin",
+        "genero": "Rock",
+        "nacionalidade": "Inglaterra",
+        "ano_criacao": 1968,
+        "foto": "link_para_foto_led_zeppelin.jpg"
+    },
+    {
+        "nome": "Queen",
+        "genero": "Rock",
+        "nacionalidade": "Inglaterra",
+        "ano_criacao": 1970,
+        "foto": "link_para_foto_queen.jpg"
+    },
+    {
+        "nome": "Pink Floyd",
+        "genero": "Rock",
+        "nacionalidade": "Inglaterra",
+        "ano_criacao": 1965,
+        "foto": "link_para_foto_pink_floyd.jpg"
+    },
+    {
+        "nome": "The Rolling Stones",
+        "genero": "Rock",
+        "nacionalidade": "Inglaterra",
+        "ano_criacao": 1962,
+        "foto": "link_para_foto_rolling_stones.jpg"
+    },
+    {
+        "nome": "AC/DC",
+        "genero": "Rock",
+        "nacionalidade": "Austrália",
+        "ano_criacao": 1973,
+        "foto": "link_para_foto_ac_dc.jpg"
+    },
+    {
+        "nome": "The Beatles",
+        "genero": "Rock",
+        "nacionalidade": "Inglaterra",
+        "ano_criacao": 1960,
+        "foto": "link_para_foto_the_beatles.jpg"
+    },
+    {
+        "nome": "U2",
+        "genero": "Rock",
+        "nacionalidade": "Irlanda",
+        "ano_criacao": 1976,
+        "foto": "link_para_foto_u2.jpg"
+    },
+    {
+        "nome": "Guns N' Roses",
+        "genero": "Rock",
+        "nacionalidade": "Estados Unidos",
+        "ano_criacao": 1985,
+        "foto": "link_para_foto_guns_n_roses.jpg"
+    },
+    {
+        "nome": "Foo Fighters",
+        "genero": "Rock",
+        "nacionalidade": "Estados Unidos",
+        "ano_criacao": 1994,
+        "foto": "link_para_foto_foo_fighters.jpg"
+    },
+    {
+        "nome": "Nirvana",
+        "genero": "Rock",
+        "nacionalidade": "Estados Unidos",
+        "ano_criacao": 1987,
+        "foto": "link_para_foto_nirvana.jpg"
+    }
+]

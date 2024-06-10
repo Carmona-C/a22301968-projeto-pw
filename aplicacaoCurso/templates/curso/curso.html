@@ -1,0 +1,43 @@
+<!-- curso.html -->
+{% extends 'curso/layout.html' %}
+{% block title %}Curso{% endblock %}
+{% block content %}
+    <div class="curso-info">
+        <br><h3>{{ curso.nome_curso }}</h3><br>
+        <p>{{ curso.apresentacao }}</p><br>
+        <p><strong>Objetivos:</strong> {{ curso.objetivos }}</p><br>
+        <p><strong>Competências:</strong> {{ curso.competencias }}</p><br>
+        {% if request.user.is_authenticated and is_editor %}
+        <a href="{% url 'curso:edita_curso' curso.id %}">
+            <button>Editar informação do curso</button>
+        </a>
+        <a href="{% url 'curso:apaga_curso' curso.id %}">
+            <button>Apagar curso</button>
+        </a><br><br>
+        {% endif %}
+        <p>Este curso tem {{ disciplinas|length }} disciplinas:</p>
+        <ul>
+            {% for disciplina in disciplinas %}
+                <li>
+                    <a href="{% url 'curso:disciplina' disciplina.id %}">{{ disciplina.nome_disciplina }}</a>
+                </li>
+            {% endfor %}
+            {% if request.user.is_authenticated and is_editor %}
+            <br><a href="{% url 'curso:novo_disciplina' %}">
+            <button>Nova disciplina</button>
+            </a>
+            {% endif %}
+        </ul>
+    </div>
+    <!-- Botão Voltar Atrás -->
+    <div style="text-align: right;">
+        <button class="btn-voltar" onclick="goBack()">Voltar atrás</button>
+    </div>
+
+    <!-- Script para voltar atrás -->
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+{% endblock %}

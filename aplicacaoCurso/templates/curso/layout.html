@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Curso{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+    }
+    header {
+        background-color: #5a5a5a;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    header h1 {
+        margin: 0;
+        font-size: 2.5em;
+        animation: fadeInDown 1s ease-in-out;
+    }
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    nav {
+        margin: 20px 0;
+        text-align: center;
+    }
+    nav a {
+        color: #5a5a5a;
+        text-decoration: none;
+        font-size: 1.2em;
+        margin: 0 10px;
+        padding: 5px 10px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        border-radius: 5px;
+    }
+    nav a:hover {
+        background-color: #5a5a5a;
+        color: #fff;
+    }
+    main {
+        flex: 1;
+        padding: 40px;
+        max-width: 900px;
+        margin: 40px auto;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    footer {
+        background-color: #5a5a5a;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: auto;
+    }
+    footer p {
+        margin: 10px 0;
+    }
+    button {
+        background-color: #5a5a5a;
+        color: #fff;
+        border: none;
+        padding: 5px ;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 5px;
+        transition: background-color 0.3s ease;
+        border-radius: 5px;
+    }
+    button:hover {
+        background-color: #4a4a4a;
+    }
+    .auth-info {
+        text-align: center;
+        margin: 20px 0;
+    }
+    .btn-voltar {
+        background-color: #ffffff;
+        color:black;
+        border: 2px solid black;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        border-radius: 5px; /* Removido para tornar o botão retangular */
+        font-size: 0.9em; /* Aumentado o tamanho do texto */
+        width: auto; /* Largura automática */
+        height: auto; /* Altura automática */
+        text-align: center;
+        line-height: 1em; /* Ajuste da altura da linha */
+        position: relative; /* Alterado para relativo */
+        bottom: auto; /* Removido */
+        right: auto; /* Removido */
+        }
+
+        .btn-voltar:hover {
+         background-color: #e0e0e0;
+         color: black;
+        }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo ao Site do meu Curso</h1>
+    </header>
+    <main>
+        <div class="auth-section">
+        <nav>
+            <a href="{% url 'curso:principal' %}">Página Principal</a>
+            <a href="{% url 'menu' %}">Menu</a>
+        </nav>
+            {% if request.user.is_authenticated %}
+                <span>Username: {{ request.user.username }}</span>
+                <a href="{% url 'logout' %}"><button>Logout</button></a>
+            {% else %}
+                <a href="{% url 'login' %}"><button>Login</button></a>
+            {% endif %}
+        </div>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Programação Web, Universidade Lusófona - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

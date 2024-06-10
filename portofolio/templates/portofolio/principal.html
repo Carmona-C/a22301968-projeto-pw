@@ -1,0 +1,42 @@
+{% extends 'portofolio/layout.html' %}
+{% load static %}
+
+{% block title %}Página Principal{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'portofolio/estilo.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="title-bar">
+    <h1>O meu portofólio de Programação Web</h1>
+    <div class="controls">
+        <button id="dark-mode-toggle" class="button">Dark Mode</button>
+         <button class="button" onclick="window.location.href='{% url 'login' %}'">Login</button>
+        <p id="dateTime"></p>
+    </div>
+</div>
+    <br><br><br><br><br><br><br><br><br><div class="portfolio-cover">
+        <img src="{% static 'portofolio/profile.jpg' %}" class="circular-image">
+    </div>
+ <br><div class="container">
+        <div class="interactive-section">
+            <div class="info">
+                <h3>Autor: João Carmona </h3>
+                <h3>Curso: Informática de Gestão</h3>
+                <a href="https://a22301968.pythonanywhere.com/autenticacao/logout/" class="button">Projetos</a>
+                <a href="https://a22301968.pythonanywhere.com/portofolio/sobre_mim/" class="button">Sobre Mim</a>
+                <a href="https://a22301968.pythonanywhere.com/portofolio/web/" class="button">WebTools</a>
+    </div>
+</div>
+<script>
+    function updateDateTime() {
+        var now = new Date();
+        var dateTimeElement = document.getElementById("dateTime");
+        dateTimeElement.textContent = "Data e Hora Atual: " + now.toLocaleString();
+    }
+
+    // Atualiza a data e hora a cada segundo
+    setInterval(updateDateTime, 1000);
+</script>
+{% endblock %}

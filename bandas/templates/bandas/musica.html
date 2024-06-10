@@ -1,0 +1,54 @@
+{% extends 'bandas/layout.html' %}
+<html>
+<head>
+    <title>Detalhes da Música</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: LightGray;
+            text-align: center;
+        }
+        h1 {
+            color: DarkSlateGray;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            list-style-type: none;
+            margin-bottom: 0; /* Removendo o espaço entre os itens da lista */
+        }
+        a {
+            color: DodgerBlue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+{% block content %}
+    <h2>Detalhes da Música</h2>
+
+    <p><strong>Nome da Música:</strong> {{ musica.nome_da_musica }}</p>
+    <p><strong>Duração:</strong> {{ musica.duracao }}</p>
+{% if request.user.is_authenticated and is_editor %}
+<a href="{% url 'bandas:edita_musica' musica.id %}">
+    <button>Editar música</button>
+</a>
+<a href="{% url 'bandas:apaga_musica' musica.id %}">
+            <button>Apagar música</button>
+</a>
+{% endif %}
+ <div style="text-align: right;">
+        <button class="btn-voltar" onclick="goBack()">Voltar atrás</button>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+{% endblock %}
+</body>
+</html>

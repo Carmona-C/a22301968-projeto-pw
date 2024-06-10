@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão Meteorológica para Lisboa</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #8ab6d6; /* Azul semelhante ao usado pelo IPMA */
+        }
+
+        nav {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #1b3a57;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 0 10px;
+            padding: 5px 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 5px;
+            border: 1px solid #1b3a57; /* Adiciona uma borda */
+        }
+
+        nav a:hover,
+        nav a:focus {
+            background-color: #8ab6d6; /* Azul claro */
+            color: #fff;
+            outline: none; /* Remove a borda ao focar */
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        .important {
+            font-weight: bold;
+        }
+
+        .weather-icon {
+            margin-top: 20px;
+            width: 140px;
+            height: auto;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1em;
+            color: white;
+            background-color: #8ab6d6; /* Azul semelhante ao usado pelo IPMA */
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #007396; /* Azul mais escuro para o hover */
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            .weather-icon {
+                width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <br><h2>Previsão Meteorológica para {{ nome_cidade }}</h2>
+        <nav>
+            <a href="{% url 'menu' %}">Menu</a>
+        </nav>
+        <br><p><span class="important">Data:</span> {{ data_previsao }}</p>
+        <p><span class="important">Temperatura Mínima:</span> {{ temp_min }}°C</p>
+        <p><span class="important">Temperatura Máxima:</span> {{ temp_max }}°C</p>
+        <p><span class="important">Descrição do Tempo:</span> {{ descricao_tempo }}</p>
+        <img src="{% static icone_animated %}" alt="Ícone animado do tempo" class="weather-icon">
+    </div>
+    <div class="buttons">
+        <a href="https://a22301968.pythonanywhere.com/meteo/previsao_tempo/" class="button">Ver previsão do tempo nos próximos 5 dias</a>
+    </div>
+</body>
+</html>

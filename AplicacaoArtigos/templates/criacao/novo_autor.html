@@ -1,0 +1,16 @@
+{% extends 'AplicacaoArtigo/layout.html' %}
+
+{% block content %}
+    <h3>Insira o conteúdo do novo Autor</h3><br>
+    <form action="" method="post" enctype='multipart/form-data'>
+    <!-- enctype deve ser definido se houver submissão de ficheiros ou imagens -->
+
+      {% csrf_token %}   <!-- obrigatório nos forms Django -->
+      <table>
+          {{ form }}   <!-- insere input para cada atributo da classe Autor, numa tabela -->
+      </table><br>
+      <input type="submit" value="Criar novo autor">
+
+    </form>
+<br>
+{% endblock %}

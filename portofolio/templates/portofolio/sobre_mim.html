@@ -1,0 +1,65 @@
+{% extends 'portofolio/layout.html' %}
+{% load static %}
+
+{% block title %}Sobre Mim{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'portofolio/estilo.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <nav class="nav-center">
+        <a class="btn" href="{% url 'portofolio:principal' %}">Página Principal</a>
+        <a href="https://a22301968.pythonanywhere.com/portofolio/web/" class="button">WebTools</a>
+    </nav>
+    <h1>Sobre Mim</h1>
+    <p>Chamo-me João Carmona, tenho 20 anos e estou no segundo ano do curso de Informática de Gestão. Desde a minha infância, cresci num ambiente onde a tecnologia era parte integrante do dia a dia, influenciado principalmente pela presença de vários familiares dedicados à área da informática. Essa imersão precoce em um universo tecnológico despertou em mim uma curiosidade irresistível e um fascínio profundo pelo potencial transformador da tecnologia.</p>
+    <p>Além disso, sempre me interessei pela gestão. A capacidade de organizar, planear e otimizar processos sempre me atraiu. Ao escolher Informática de Gestão, encontrei a fusão ideal entre a tecnologia e a gestão, duas áreas que me motivam profundamente.</p>
+    <p>Estou sempre preparado para enfrentar novos desafios, tanto dentro como fora do ambiente académico.</p>
+
+    <section class="details">
+        <div class="experience">
+            <h2>Experiência</h2>
+            <ul>
+                <li>Voluntariado num centro de dia</li>
+                <li>Aprendiz de armazém</li>
+                <li>Mini curso de manobrador de máquinas agrícolas</li>
+                <li>Ajundante de contabilidade</li>
+                <li>Projetos Acadêmicos relacionados com o curso</li>
+            </ul>
+        </div>
+        <div class="skills">
+            <h2>Competências</h2>
+            <ul>
+                <li>Linguagem JavaScript</li>
+                <li>Django</li>
+                <li>Python</li>
+                <li>C</li>
+                <li>Contabilidade</li>
+                <li>Gestão Financeira</li>
+                <li>Marketing digital</li>
+                <li>Trabalho em equipa</li>
+            </ul>
+        </div>
+        <div class="interests">
+            <h2>Interesses</h2>
+            <ul>
+                <li>Videojogos</li>
+                <li>Futebol</li>
+                <li>Natação</li>
+            </ul>
+        </div>
+    </section>
+
+    <div style="text-align: right; margin-top: 20px;">
+        <button class="btn" onclick="goBack()">Voltar atrás</button>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+{% endblock %}

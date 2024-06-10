@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Curso{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #fff7e6; /* Amarelo clarinho */
+        color: #000000; /* Letras pretas */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+    }
+    header {
+        background-color: #ffb366; /* Laranja claro */
+        color: #000000; /* Letras pretas */
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        margin-bottom: 20px; /* Adiciona espaço abaixo do cabeçalho */
+    }
+    header h1 {
+        margin: 0;
+        font-size: 2.5em;
+        animation: fadeInDown 1s ease-in-out;
+    }
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    nav {
+        margin: 20px 0;
+        text-align: center;
+    }
+    nav a {
+        color: #000000; /* Letras pretas */
+        text-decoration: none;
+        font-size: 1.2em;
+        margin: 0 10px;
+        padding: 5px 10px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        border-radius: 5px;
+    }
+    nav a:hover {
+        background-color: #ff8c00; /* Fundo laranja ao passar o mouse */
+        color: #000000; /* Letras pretas ao passar o mouse */
+    }
+    .container {
+        flex: 1;
+        padding: 40px;
+        max-width: 900px;
+        margin: 40px auto;
+        background-color: #fff; /* Branco */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        animation: fadeIn 1s ease-in-out;
+        margin-bottom: 20px; /* Adiciona espaço abaixo do conteúdo principal */
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    footer {
+        background-color: #ffb366; /* Laranja claro */
+        color: #000000; /* Letras pretas */
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: auto;
+    }
+    footer p {
+        margin: 10px 0;
+    }
+    button {
+        background-color: #ff8c00; /* Laranja mais escuro */
+        color: #000000; /* Letras pretas */
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 5px;
+        transition: background-color 0.3s ease;
+        border-radius: 5px;
+    }
+    button:hover {
+        background-color: #e07c00;
+    }
+    .auth-info {
+        text-align: center;
+        margin: 20px 0;
+    }
+    h2 {
+        color: #ff8c00; /* Laranja mais escuro */
+        text-decoration: underline; /* Sublinhado */
+    }
+    ul {
+        list-style-type: none; /* Remove os marcadores de lista */
+        padding: 0;
+    }
+    li {
+        margin-bottom: 10px; /* Espaçamento entre itens da lista */
+        border-bottom: 1px solid #eee; /* Linha divisória entre itens */
+        padding-bottom: 5px; /* Espaçamento inferior */
+    }
+    a {
+        color: #000000; /* Letras pretas */
+        text-decoration: none; /* Remove sublinhado dos links */
+        transition: color 0.3s, background-color 0.3s; /* Transição suave da cor ao passar o mouse */
+    }
+    a:hover {
+        color: #000000; /* Letras pretas ao passar o mouse */
+        background-color: #ff8c00; /* Fundo laranja ao passar o mouse */
+    }
+    .bullet {
+        font-size: 30px;
+        margin-right: 5px;
+        color: orange; /* Altere a cor conforme necessário */
+    }
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        color: #000000;
+    }
+
+        .btn-voltar {
+        background-color: #ffffff;
+        color: #ff8c00;
+        border: 2px solid #ff8c00;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        border-radius: 5px; /* Removido para tornar o botão retangular */
+        font-size: 0.9em; /* Aumentado o tamanho do texto */
+        width: auto; /* Largura automática */
+        height: auto; /* Altura automática */
+        text-align: center;
+        line-height: 1em; /* Ajuste da altura da linha */
+        position: relative; /* Alterado para relativo */
+        bottom: auto; /* Removido */
+        right: auto; /* Removido */
+        }
+
+        .btn-voltar:hover {
+         background-color: #e0e0e0;
+         color: #ff8c00;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo à minha Aplicação de Artigos</h1>
+    </header>
+    <div class="auth-info">
+        <p>Pesquisa e descobre mais sobre estes autores!</p>
+        {% if request.user.is_authenticated %}
+            <p>Username: {{request.user.username}}</p>
+            <a href="{% url 'logout' %}"><button>Logout</button></a>
+        {% else %}
+            <a href="{% url 'login' %}"><button>Login</button></a>
+        {% endif %}
+    </div>
+    <div class="container">
+        <nav>
+            <a href="{% url 'AplicacaoArtigo:principal' %}">Página Principal</a>
+            <a href="{% url 'menu' %}">Menu</a>
+        </nav>
+        <div class="auth-section">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Programação Web, Universidade Lusófona - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

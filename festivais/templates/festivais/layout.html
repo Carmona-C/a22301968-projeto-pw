@@ -1,0 +1,30 @@
+<!--templates/layout.html -->
+
+<html>
+<head>
+    <title>Festivais</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: LightGray;
+            text-align: center;
+        }
+        h1 {
+            color: DarkSlateGray;
+        }
+        p {
+            color: DimGray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Festivais</h1><br>
+    <main>
+            {% block content %}
+            {% endblock %}
+    </main><br><br>
+    <footer><br><br>
+        <p>2024 </p>
+    </footer>
+</body>
+</html>

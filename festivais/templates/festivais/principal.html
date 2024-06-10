@@ -1,0 +1,45 @@
+<!-- curso.html -->
+{% extends 'festivais/layout.html' %}
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Festivais{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Estilos personalizados */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    </head>
+    <body>
+        {% block content %}
+        <ul>
+        {% for festival in festivais %}
+            <li>
+                <a href="{% url 'festivais:festival' festival.id %}">{{ festival.nome}}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!-- curso.html -->
+{% extends 'curso/layout.html' %}
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Curso{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Estilos personalizados */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    </head>
+    <body>
+        {% block content %}
+        <ul>
+        <br><p>Pesquisa e sabe mais acerca do meu curso!</p>
+        {% for curso in cursos %}
+            <li>
+                <a href="{% url 'curso:curso' curso.id %}">{{ curso.nome_curso }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+        <br>
+        {% if request.user.is_authenticated and is_editor %}
+        <a href="{% url 'curso:novo_curso' %}">
+            <button>Novo curso</button>
+        </a>
+        {% endif %}
+    {% endblock %}
+    </body>
+</html>

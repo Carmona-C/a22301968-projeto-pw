@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.M.Carmona - Materiais de Construção, Unipessoal Lda</title>
+    <style>
+        body {
+            background: lightgoldenrodyellow;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Peça aqui o seu orçamento:</h1>
+    </header>
+    <nav>
+            <a href="{% url 'Empresa:IntroducaoDaEmpresa' %}">IntroduçãoDaEmpresa</a>&nbsp;&nbsp;
+            <a href="{% url 'Empresa:PaginaDeOrcamento' %}">PáginaDeOrçamento</a>&nbsp;&nbsp;
+            <a href="{% url 'Empresa:PaginaDeCompra' %}">PáginaDeCompra</a>
+    </nav>
+    <main>
+        <h2>Revestimentos</h2>
+        <p>A escolha de revestimentos é a base da sua obra de arte. Tanto faz o claro ou o escuro, o segredo é a combinação perfeita.</p>
+        <h3>Coleções/Texturas:</h3>
+        <ul>
+            <li><strong>Mármore:</strong> Palace, Pure Travertine, Muse e Natura Kalacata.</li>
+            <li><strong>Cimento:</strong> Flow, Dandy, Backstage, Boulevard, Alpe, Studio, Avenue, Concrete, Plaster, Kompact, Krea e Citizen.</li>
+            <li><strong>Pedra:</strong> Magma, Ebro, Luna, Dandy, Eternal Stone, Stone Age, Piazen, Urban Stone, Rock, Serena e Ocean.</li>
+            <li><strong>Madeira:</strong> Nogal, Pro-Deck, Noble, Oslo, Bosco e Deck-Simple.</li>
+        </ul>
+        <h2>Móveis de Wc</h2>
+        <p>O móvel é uma escolha notável na sua casa de banho. Por vezes, o mais improvável é o que faz toda a diferença.</p>
+        <h3>Principais Categorias:</h3>
+        <ul>
+            <li><strong>Inside:</strong> Colours: Carvalho Soft, Carvalho Natur </li>---------</strong> Size(cm): 70x35; 80x35; 100x40; 120x40; 160x40</li>
+            <li><strong>Mlife:</strong>  Colours: Lacquered White, Lacquered Melanina </li>--------</strong> Size(cm): 80x35; 100x35; 120x35</li>
+            <li><strong>NewSide:</strong>  Colours: Futura, Denver, Azabache, Nogal </li>------------</strong> Size(cm): 80x35; 120x35</li>
+            <li><strong>Style:</strong>  Colours: Mate White, Mate Black, Mate Grey, Mate Green </li>--------</strong> Size(cm): 80x35; 120x35</li>
+            <li><strong>Adele:</strong>  Colours: Mate White, Mate Black, Mate Grey </li>---------</strong> Size(cm): 80x35; 120x35; 160x35</li>
+            <li><strong>Ritz:</strong>  Colours: Mate Black, Mate Grey </li>-------</strong> Size(cm): 80x35; 120x35</li>
+            <li><strong>Solar:</strong>  Colours: Futura, Denver, Azabache, Nogal </li>--------</strong> Size(cm): 80x40; 120x40; 160x40</li>
+            <li><strong>4Line:</strong>  Colours: Mate Green, Lacquered Grey </li>--------</strong> Size(cm): 80x40; 120x40; 160x40</li>
+        </ul>
+        <h2>Torneiras</h2>
+        <p>Um acessório importante numa wc ou numa cozinha é uma torneira. Misture o útil com o irresistivél.</p>
+        <h3>Marca e Produto mais Vendido:</h2>
+        <ul>
+            <li><strong>Roca:</strong> Gap e Vitória</li>
+            <li><strong>Sanitana:</strong> Coral e Glam </li>
+            <li><strong>Grohe:</strong> Essence e Concetto</li>
+            <li><strong>W7:</strong> Kiara, Basiq, Nero, Perla e Mitzi</li>
+        </ul>
+        <h2>Sanitários</h2>
+        <p>Sanitários são essenciais para promover higiene e conforto em ambientes como banheiros e cozinhas. A união do prático com o atraente é fundamental, integrando-os de forma inteligente ao design dos espaços.</p>
+        <h3>Marcas e Lista de Produtos:</h3>
+        <ul>
+            <li><strong>Roca:</strong> Línea Mónaco, Debba Square, Nexo,  Debba Classic</li>
+            <li><strong>Sanitana:</strong> Munique, Regina, Pop, Coral Btw, Mobil, Tocai</li>
+            <li><strong>Sanidusa:</strong> Winner Compact, Winner DC, Easy, Look, Urb.y, Luxor, Advance, Alfa, Aveiro</li>
+        </ul><br>
+         <form>
+        <div>
+            <label for="nome_cliente">Nome do Cliente:</label>
+            <input type="text" id="nome_cliente" name="nome_cliente"><br><br>
+        </div>
+        <div>
+            <label for="Email">Email:</label>
+            <input type="text" id="Email" name="Email"><br><br>
+        </div>
+        </div><div>
+            <label for="Tipo de Produto">Tipo de Produto:</label>
+            <input type="text" id="Tipo de Produto" name="Tipo de Produto"><br><br>
+        </div>
+        <div>
+            <label for="Cor ou Modelo do Produto">Cor ou Modelo do Produto:</label>
+            <input type="text" id="Cor ou Modelo do Produto" name="Cor ou Modelo do Produto"><br><br>
+        </div>
+        <div>
+            <label for="Quantidade de Produto">Quantidade de Produto:</label>
+            <input type="text" id="Quantidade de Produto" name="Quantidade de Produto"><br><br>
+        </div>
+        <div>
+            <input type="submit" value="Enviar pedido Orçamento">
+        </div>
+        <br><br>
+        <h4>Vai receber o orçamento por Email</h4>
+        <h4>Obrigado pela sua excelente escolha !</h4>
+    </form>
+</body>
+</html>
+        <p><br><br>Desfruta e descobre mais sobre o nosso site!</p><br>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - J.M.Carmona - Materiais de Construção, Unipessoal Lda - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

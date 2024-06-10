@@ -1,0 +1,85 @@
+{% block content %}
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+    text-align: center;
+}
+
+  .auth-container {
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  .auth-container h3 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  .auth-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  .auth-container li {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  .auth-container button {
+    color: white;
+    padding:5px ;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  .btn-red {
+    background-color: #ff9999; /* Vermelho claro */
+  }
+  .section {
+    margin-bottom: 20px;
+  }
+  .btn-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  .btn-group button {
+    flex: 1;
+    margin: 0 5px;
+  }
+</style>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+<div class="auth-container">
+  <h3>Login</h3>
+
+  {% if mensagem %}
+    <p>mensagem: {{ mensagem }}</p>
+  {% endif %}
+  <form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username..">
+    <input type="password" name="password" placeholder="Palavra-chave.."><br>
+    <br><input type="submit">
+  </form>
+
+  <a href="{% url 'registo' %}">
+    <button class="btn-red">Registar</button>
+  </a>
+
+  <a href="{% url 'reset_password' %}">
+    <button class="btn-red">Recuperar Palavra-chave</button>
+  </a>
+</div>
+{% endblock %}

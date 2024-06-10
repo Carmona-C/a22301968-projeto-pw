@@ -1,0 +1,39 @@
+{% extends 'AplicacaoArtigo/layout.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Avaliações do Artigo: {{ Artigo.titulo }}</h2>
+    {% if avaliacoes %}
+        <div class="avaliacoes">
+            <ul>
+                {% for avaliacao in avaliacoes %}
+                    <li>
+                        <p>Artigo: {{ avaliacao.artigo.titulo }}</p>
+                        <p>Avaliador: {{ avaliacao.nome_avaliacao }}</p>
+                        <p>Avaliação: {{ avaliacao.avaliacao }}</p>
+                        {% if request.user.is_authenticated and is_editor %}
+                            <a href="{% url 'AplicacaoArtigo:edita_avaliacao' avaliacao.id %}">
+                                <button>Editar informação da avaliação</button>
+                            </a>
+                            <a href="{% url 'AplicacaoArtigo:apaga_avaliacao' avaliacao.id %}">
+                                <button>Apagar avaliação</button>
+                            </a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+        <p>Nenhuma avaliação encontrada para este artigo.</p>
+    {% endif %}
+    <div style="text-align: right;">
+        <button class="btn-voltar" onclick="goBack()">Voltar atrás</button>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+{% endblock %}

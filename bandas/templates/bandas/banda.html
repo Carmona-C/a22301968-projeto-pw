@@ -1,0 +1,73 @@
+<!-- bandas.html -->
+{% extends 'bandas/layout.html' %}
+<html>
+<head>
+    <title>Bandas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: LightGray;
+            text-align: center;
+        }
+        h1 {
+            color: DarkSlateGray;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+          li {
+            list-style-type: none; /* Remove os pontos de tópicos */
+        }
+        a {
+            color: DodgerBlue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+{% block content %}
+    <h3>{{ banda }}</h3>
+    <p> Nome da Banda: {{ banda.nome_da_banda }}</p>
+    <p> Nacionalidade: {{ banda.nacionalidade }}</p>
+    <p> Género: {{ banda.genero }}</p>
+    <p> Ano criação: {{ banda.ano_criacao }}</p>
+    <h4>Imagem da banda:</h4>
+    <div class="band-image-container">
+    <img src="{{ banda.foto.url }}" alt="Foto da Banda" class="band-image">
+    </div>
+    <br>
+    {% if request.user.is_authenticated and is_editor %}
+    <a href="{% url 'bandas:edita_banda' banda.id %}">
+            <button>Editar informação da banda</button>
+    <a href="{% url 'bandas:apaga_banda' banda.id %}">
+            <button>Apagar banda</button>
+    </a>
+    {% endif %}
+    <br>
+    <br><p>Existem {{ banda.album_set.all|length }} Albuns da {{ banda }}:</p>
+     {% for album in albuns %}
+        <li>
+            <a href="{% url 'bandas:album' album.id %}">{{ album.nome_do_album }}</a>
+        </li>
+    {% endfor %}
+</ul>
+<br>
+{% if request.user.is_authenticated and is_editor %}
+<a href="{% url 'bandas:novo_album' %}">
+    <button>Novo Album</button>
+</a>
+{% endif %}
+    <div style="text-align: right;">
+        <button class="btn-voltar" onclick="goBack()">Voltar atrás</button>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,87 @@
+{% extends 'AplicacaoArtigo/layout.html' %}
+
+{% block title %}Aplicação Artigo{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicação Artigo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #fff7e6; /* Amarelo clarinho */
+        margin: 0;
+        padding: 0;
+        color: #000000; /* Letras pretas */
+    }
+    header {
+        background-color: #ffb366; /* Laranja claro */
+        color: #000000; /* Letras pretas */
+        padding: 20px 0;
+        text-align: center;
+        margin-bottom: 20px; /* Adiciona espaço abaixo do cabeçalho */
+    }
+    footer {
+        background-color: #ffb366; /* Laranja claro */
+        color: #000000; /* Letras pretas */
+        padding: 10px 0;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    main {
+        padding: 20px;
+        background-color: #fff; /* Branco */
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        margin-bottom: 20px; /* Adiciona espaço abaixo do conteúdo principal */
+    }
+    h2 {
+        color: #ff8c00; /* Laranja mais escuro */
+        text-decoration: underline; /* Sublinhado */
+    }
+    h5 {
+        color: #ff8c00; /* Laranja mais escuro */
+        text-decoration: underline; /* Sublinhado */
+    }
+    ul {
+        list-style-type: none; /* Remove os marcadores de lista */
+        padding: 0;
+    }
+    li {
+        margin-bottom: 10px; /* Espaçamento entre itens da lista */
+        border-bottom: 1px solid #eee; /* Linha divisória entre itens */
+        padding-bottom: 5px; /* Espaçamento inferior */
+    }
+    a {
+        color: #000000; /* Letras pretas */
+        text-decoration: none; /* Remove sublinhado dos links */
+        transition: color 0.3s; /* Transição suave da cor ao passar o mouse */
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <h5>Esta página de artigos tem {{ autores|length }} autores para explorar:</h5>
+            <br>{% for autor in autores %}
+                <li>
+                   <a href="{% url 'AplicacaoArtigo:autor' autor.id %}">{{ autor.nome }}</a>
+                </li>
+            {% endfor %}
+            {% if request.user.is_authenticated and is_editor %}
+                <br>
+                <a href="{% url 'AplicacaoArtigo:novo_autor' %}">
+                    <button>Inserir novo autor</button>
+                </a>
+            {% endif %}
+        </ul>
+    </div>
+</body>
+</html>
+{% endblock %}

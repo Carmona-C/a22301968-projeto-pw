@@ -1,0 +1,76 @@
+{% extends 'curso/layout.html' %}
+{% block title %}Detalhes da Disciplina{% endblock %}
+{% block content %}
+    <div style="background-color: white; padding: 20px;">
+        <h3 style="color: #333;"><strong>Detalhes da Disciplina:</strong></h3><br>
+        <p><strong>Nome da disciplina:</strong> {{ disciplina.nome_disciplina }}</p>
+        <p><strong>Ano:</strong> {{ disciplina.ano }}</p>
+        <p><strong>Semestre:</strong> {{ disciplina.semestre }}</p>
+        <p><strong>ECTS:</strong> {{ disciplina.ects }}</p>
+        <p><strong>Código da unidade curricular:</strong> {{ disciplina.curricularIUnitReadableCode }}</p>
+        <p><strong>Área Científica:</strong> {{ disciplina.area_cientifica }}</p>
+        {% if request.user.is_authenticated and is_editor %}
+        <a href="{% url 'curso:edita_disciplina' disciplina.id %}">
+            <button>Editar informação da disciplina</button>
+        </a>
+        <a href="{% url 'curso:apaga_disciplina' disciplina.id %}">
+            <button>Apagar disciplina</button>
+        </a><br><br>
+        {% endif %}
+        <h3 style="color: #333;"><strong>Docentes:</strong></h3>
+        {% if request.user.is_authenticated and is_editor %}
+        <a href="{% url 'curso:novo_docente' %}">
+            <button>Novo docente</button>
+        </a>
+        {% endif %}
+        <br>{% for docente in docentes %}
+            <br><p><strong>Nome:</strong> {{ docente.nome_docente }}</p>
+            <hr>
+            {% if request.user.is_authenticated and is_editor %}
+            <a href="{% url 'curso:edita_docente' docente.id %}">
+            <button>Editar informação do docente</button>
+            </a>
+            <a href="{% url 'curso:apaga_docente' docente.id %}">
+            <button>Apagar docente</button>
+            </a><br><br>
+            {% endif %}
+        {% empty %}
+            <p>Nenhum docente relacionado encontrado.</p>
+        {% endfor %}
+        <br>
+        <h3 style="color: #333;"><strong>Projetos Relacionados:</strong></h3><br>
+        {% for projeto in projetos %}
+        {% if request.user.is_authenticated and is_editor %}
+        <a href="{% url 'curso:novo_projeto' %}">
+            <button>Novo projeto</button>
+        </a>
+        {% endif %}
+            <br><br><p><strong>Descrição:</strong> {{ projeto.descricao }}</p>
+            <p><strong>Conceitos Aplicados:</strong> {{ projeto.conceitos_aplicados }}</p>
+            <p><strong>Tecnologias Utilizadas:</strong> {{ projeto.tecnologias_utilizadas }}</p>
+            <p><strong>Vídeo Demo:</strong> <a href="{{ projeto.video_demo_link }}">{{ projeto.video_demo_link }}</a></p>
+            <p><strong>GitHub:</strong> <a href="{{ projeto.github_link }}">{{ projeto.github_link }}</a></p>
+            <img src="{{ projeto.imagem.url }}" alt="Imagem do Projeto">
+            {% if request.user.is_authenticated and is_editor %}
+            <br><br><a href="{% url 'curso:edita_projeto' projeto.id %}">
+            <button>Editar informação do projeto</button>
+            </a>
+            <a href="{% url 'curso:apaga_projeto' projeto.id %}">
+            <button>Apagar projeto</button>
+            </a><br><br>
+            {% endif %}
+            <hr>
+        {% empty %}
+            <p>Nenhum projeto relacionado encontrado.</p>
+        {% endfor %}
+        <div style="text-align: right;">
+            <button class="btn-voltar" onclick="goBack()">Voltar atrás</button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+{% endblock %}

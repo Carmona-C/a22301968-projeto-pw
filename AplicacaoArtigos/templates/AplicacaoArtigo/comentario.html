@@ -1,0 +1,32 @@
+{% extends 'AplicacaoArtigo/layout.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Comentários do Artigo: {{ Artigo.titulo }}</h2>
+    {% if comentario %}
+        <div class="comentario-info">
+            <h3>Comentário em {{ comentario.artigo }}</h3>
+            <p>Autor: {{ comentario.autor }}</p>
+            <p>Conteúdo: {{ comentario.conteudo }}</p>
+            <p>Data do Comentário: {{ comentario.data_comentario }}</p>
+        </div>
+    {% else %}
+        <p>Nenhuma avaliação encontrada para este artigo.</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+
+    <div style="text-align: right;">
+        <button class="btn-voltar" onclick="goBack()">Voltar atrás</button>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+{% endblock %}

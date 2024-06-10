@@ -1,0 +1,50 @@
+{% extends 'portofolio/layout.html' %}
+{% load static %}
+
+{% block title %}WebTools{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'portofolio/estilo.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <nav class="nav-center">
+        <a class="btn" href="{% url 'portofolio:principal' %}">Página Principal</a>
+    </nav>
+    <br><h1>WebTools</h1>
+    <section class="parallax">
+        <br><div class="experience">
+            <h2>Na realização deste site</h2>
+            <ul>
+                <p>Desenvolvi conhecimento sobre:</p>
+                <br><li>Linguagem Django</li>
+                <li>Python</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+        </div>
+        <br><div class="skills">
+            <h2>Ensinamentos na realização do projeto:</h2>
+            <ul>
+                <li>Django facilitou-me a criação rápida de aplicações web robustas</li>
+                <li>Python uma nova linguagem fácil de ler e escrever</li>
+                <li>HTML consegui definir as estruturas das páginas web</li>
+                <li>CSS consegui a aparência e layout das minhas páginas</li>
+                <li>JavaScript permitiu-me criar conteúdo muito dinâmico</li>
+            </ul>
+        </div>
+    </section>
+
+<br><br><br><br><br><br><br><br><br><div style="text-align: right; margin-top: 20px;">
+        <button class="btn" onclick="goBack()">Voltar atrás</button>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+{% endblock %}

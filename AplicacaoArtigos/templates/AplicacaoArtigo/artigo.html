@@ -1,0 +1,56 @@
+{% extends 'AplicacaoArtigo/layout.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="artigo-info">
+        <h2>{{ artigo.titulo }}</h2>
+        <br><p>{{ artigo.conteudo }}</p>
+        {% if request.user.is_authenticated and is_editor %}
+        <a href="{% url 'AplicacaoArtigo:edita_artigo' artigo.id %}">
+            <button>Editar informação do artigo</button>
+        <a href="{% url 'AplicacaoArtigo:apaga_artigo' artigo.id %}">
+            <button>Apagar artigo</button>
+        </a>
+        {% endif %}
+    </div>
+    <div>
+<div class="container">
+    <h3 class="titulo">Comentários:</h3>
+    <a class="link" href="{% url 'AplicacaoArtigo:comentario' artigo.id %}">
+        <span class="bullet">&#8226;</span> Ver todos os comentários sobre o artigo
+    </a>
+    {% if request.user.is_authenticated and is_editor %}
+    <br>
+    <a href="{% url 'AplicacaoArtigo:novo_comentario' %}">
+        <button>Novo Comentário</button>
+    </a>
+    {% endif %}
+    <br><br>
+    <br><h3 class="titulo">Avaliações:</h3>
+    <ul>
+        {% for avaliacao in avaliacoes %}
+            <li><span class="bullet">&#8226;</span> {{ avaliacao.nota }} - {{ avaliacao.comentario }}</li>
+        {% endfor %}
+    </ul>
+    <a class="link" href="{% url 'AplicacaoArtigo:avaliacao' artigo.id %}">
+        <span class="bullet">&#8226;</span> Ver todas as avaliações sobre o artigo
+    </a>
+    {% if request.user.is_authenticated and is_editor %}
+        <br>
+        <a href="{% url 'AplicacaoArtigo:novo_avaliacao' %}">
+            <button>Nova Avaliação</button>
+        </a>
+    {% endif %}
+        <div style="text-align: right;">
+        <button class="btn-voltar" onclick="goBack()">Voltar atrás</button>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</div>
+</div>
+{% endblock %}
